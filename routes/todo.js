@@ -1,7 +1,9 @@
 const router = require('express').Router();
+const userController = require('../controllers/user');
 
-router.get('/', async (req, res) => {
-  res.json({ status: 'success', message: 'Test - Root Todo Route' });
-});
+router.get('/', userController.findAllTodos);
+router.post('/', userController.addTodo);
+router.patch('/:id', userController.updateTodo);
+router.delete('/:id', userController.deleteTodo);
 
 module.exports = router;
