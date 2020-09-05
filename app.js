@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+const todoRouter = require('./routes/todo');
+app.use('/todo', todoRouter);
+
 const run = async () => {
   await mongoose.connect(
     'mongodb+srv://admin-rohit:test123@cluster0-exv7e.mongodb.net/furniture-store',
