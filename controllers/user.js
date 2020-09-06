@@ -1,5 +1,7 @@
+// Importing the model
 const Todo = require('../models/todo');
 
+// Add a todo
 const addTodo = async (req, res) => {
   try {
     await new Todo(req.body).save();
@@ -9,6 +11,7 @@ const addTodo = async (req, res) => {
   }
 };
 
+// Get all todos
 const findAllTodos = async (req, res) => {
   try {
     const allTodos = await Todo.find();
@@ -18,6 +21,7 @@ const findAllTodos = async (req, res) => {
   }
 };
 
+// Update a todo using its _id
 const updateTodo = async (req, res) => {
   try {
     const operation = await Todo.updateOne({ _id: req.params.uid }, req.body);
@@ -29,6 +33,7 @@ const updateTodo = async (req, res) => {
   }
 };
 
+// Deleting a todo using its _id
 const deleteTodo = async (req, res) => {
   try {
     const operation = await Todo.deleteOne({ _id: req.params.uid });
@@ -40,6 +45,7 @@ const deleteTodo = async (req, res) => {
   }
 };
 
+// Exporting our controller functions
 module.exports = {
   addTodo,
   findAllTodos,
