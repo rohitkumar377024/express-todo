@@ -19,7 +19,17 @@ const findAllTodos = async (req, res) => {
 };
 
 const updateTodo = async (req, res) => {};
-const deleteTodo = async (req, res) => {};
+
+const deleteTodo = async (req, res) => {
+  try {
+    const operation = await Todo.deleteOne({ _id: req.params.uid });
+    operation.deletedCount === 1
+      ? res.json({ status: 'success', message: 'Todo deleted successfully.' })
+      : res.json({ status: 'error', message: 'Todo not found.' });
+  } catch (e) {
+    res.json({ status: 'error', message: 'Could not delete todo.' });
+  }
+};
 
 module.exports = {
   addTodo,

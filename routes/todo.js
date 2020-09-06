@@ -3,7 +3,7 @@ const userController = require('../controllers/user');
 
 router.get('/', userController.findAllTodos);
 router.post('/', userController.addTodo);
-router.patch('/:id', userController.updateTodo);
-router.delete('/:id', userController.deleteTodo);
+router.patch('/:uid', userController.updateTodo);
+router.delete('/:uid', userController.deleteTodo);
 
 module.exports = router;
