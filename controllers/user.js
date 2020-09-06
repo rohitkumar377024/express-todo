@@ -18,7 +18,16 @@ const findAllTodos = async (req, res) => {
   }
 };
 
-const updateTodo = async (req, res) => {};
+const updateTodo = async (req, res) => {
+  try {
+    const operation = await Todo.updateOne({ _id: req.params.uid }, req.body);
+    operation.nModified === 1
+      ? res.json({ status: 'success', message: 'Todo updated successfully.' })
+      : res.json({ status: 'error', message: 'Todo not found.' });
+  } catch (e) {
+    res.json({ status: 'error', message: 'Could not update todo.' });
+  }
+};
 
 const deleteTodo = async (req, res) => {
   try {
